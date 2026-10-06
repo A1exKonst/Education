@@ -1,6 +1,15 @@
 В этой папке лежат решения домашних заданий по курсу C++.
 
 
+Параметры:
+
+Debug compile options:
+`g++ -std=c++23 -Wall -Wextra -Wpedantic \
+    -Wshadow -Wconversion -Wfloat-equal -Wformat=2 \
+    -fsanitize=address,undefined \
+    main.cpp -o main`
+
+
 
 Дедлайны:
 
