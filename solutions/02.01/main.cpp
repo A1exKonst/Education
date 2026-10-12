@@ -27,11 +27,16 @@ Then solution for F_n is: F_n = C_1 * q_1^n + C_2 * q_2^n.
 From F_0 = 0, F_1 = 1 we get C_1 = 1 / \sqrt{5}; C_2 = -1 / \sqrt{5}
 */
 
+
+
 #include <iostream>
 #include <cmath>
 #include <print>
 
+
+
 int main() {
+
     int n = 0;
     if (!(std::cin >> n) || n < 0 || n > 46) {
         return 1;
@@ -42,6 +47,7 @@ int main() {
     const double q_2 = (1.0 -  std::sqrt(5.0)) / 2.0;
 
     double Fn_double = (std::pow(q_1, n) - std::pow(q_2, n)) /  std::sqrt(5.0);
+
     int Fn_int = static_cast<int>(std::round(Fn_double));
 
     std::print("{}\n", Fn_int);
