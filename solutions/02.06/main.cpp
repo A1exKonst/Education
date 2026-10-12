@@ -1,4 +1,8 @@
-// quickselect algorithm for O(N) median search.
+// Probkem 02.06
+/*
+Calculate statistics of statically defined array
+*/
+// quickselect algorithm can be used for O(N) median search.
 
 
 
@@ -46,7 +50,7 @@ int main() {
 
     // min, max, average combined with input:
     for (int i = 1; i < size; ++i) {
-        std::cin >> numbers[i];
+        if (!(std::cin >> numbers[i])) return 1;
         if (numbers[i] < min_val) min_val = numbers[i];
         if (numbers[i] > max_val) max_val = numbers[i];
         sum += numbers[i];
@@ -65,7 +69,7 @@ int main() {
         sorted_numbers[i] = numbers[i];
     }
 
-    bubble_sort(sorted_numbers, size);
+    bubble_sort(sorted_numbers, size); // sort is performed to calculate median
 
     // median
     double median;
