@@ -17,14 +17,4 @@
 Параметры:
 
 Debug compile options:
-`g++ -std=c++23 -O1 -g   
-	-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC \
-	-Wall -Wextra -Wpedantic \
-	-Wshadow -Wconversion -Wsign-conversion -Wfloat-equal -Wformat=2 \
-	-Wold-style-cast -Wuseless-cast -Wzero-as-null-pointer-constant \
-	-Wsuggest-override -Wnon-virtual-dtor \
-	-Wduplicated-branches -Wduplicated-cond -Wlogical-op -Wnull-dereference \
-	-Wextra-semi -Wcast-align=strict -Wmissing-declarations -Wctor-dtor-privacy \
-	-fanalyzer -fstack-protector-strong \
-	-fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow,bounds-strict \
-	main.cpp -o main`
+`g++ -std=c++23 -O1 -g -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -Wfloat-equal -Wformat=2 -Wold-style-cast -Wuseless-cast -Wzero-as-null-pointer-constant -Wsuggest-override -Wnon-virtual-dtor -Wduplicated-branches -Wduplicated-cond -Wlogical-op -Wnull-dereference -Wextra-semi -Wcast-align=strict -Wmissing-declarations -Wctor-dtor-privacy -fanalyzer -fstack-protector-strong -fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow,bounds-strict main.cpp -o main`
