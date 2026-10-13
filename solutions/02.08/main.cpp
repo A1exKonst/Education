@@ -34,20 +34,22 @@ It was supposed, that allocation of this size will take more time,
 #include <vector>
 #include <print>
 
+using ull_t = unsigned long long;
+
 
 
 int main() {
-    const unsigned long long upper_bound = 100; // calculate all Collatz sequences for n in [1;100]
+    const ull_t upper_bound = 100; // calculate all Collatz sequences for n in [1;100]
     
     // cache[i] = length_i => the length of Collatz sequence with a start {n = i} is {length_i}
     std::vector<std::size_t> cache(upper_bound + 1, 0);
     cache[1] = 1; // base case
 
-    unsigned long long max_start_value = 1;
+    ull_t max_start_value = 1;
     std::size_t max_length = 1;
 
-    for (unsigned long long i = 2; i <= upper_bound; ++i) {
-        unsigned long long n = i;
+    for (ull_t i = 2; i <= upper_bound; ++i) {
+        ull_t n = i;
         std::size_t steps = 0;
 
         // calculate Collatz sequence until already calculated (cached) value is found:
