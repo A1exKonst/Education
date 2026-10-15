@@ -8,8 +8,11 @@ terms
 #include <iostream>
 #include <print>
 
-double calculate_pi(const double epsilon) {
+double calculate_pi(const double epsilon);
 
+double calculate_e(const double epsilon);
+
+double calculate_pi(const double epsilon) {
   // Lebniz series terms:
   // pi = 4 * (1 - 1/3 + 1/5 - 1/7 + ... ) + (-1)^n / (2n + 1)
 
@@ -29,7 +32,6 @@ double calculate_pi(const double epsilon) {
 }
 
 double calculate_e(const double epsilon) {
-
   // Mauclaurin series terms:
   // e = 1/0! + 1/1! + 1/2! + 1/3! + ...
   // term_n = term_{n-1} / n

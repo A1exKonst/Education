@@ -8,6 +8,8 @@ Calculate statistics of statically defined array
 #include <iostream>
 #include <print>
 
+void bubble_sort(double *numbers, int size);
+
 void bubble_sort(double *numbers, int size) {
   for (int i = 0; i < size - 1; ++i) {
     bool swapped = false;
@@ -31,7 +33,7 @@ int main() {
   // statically defined array
   const int MAX_SIZE = 1000;
   double numbers[MAX_SIZE];
-  int size = 0;
+  int size = 0; // could be unsigned int.
 
   if (!(std::cin >> size) || size <= 0 || size > MAX_SIZE) {
     return 1;
