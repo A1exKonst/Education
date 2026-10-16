@@ -12,9 +12,10 @@ Launch:
 
 4. `cmake --build build`
 
-5. 1. Launch example: `./build/task_02.01`.
+5. 
+	1. Launch example: `./build/task_02.01`.
 
-5. 2. Automatic launch of all tasks is possible: `./run_tasks.sh build` or `./run_tasks.sh build_strict` 
+	2. Automatic launch of all tasks is possible: `./run_tasks.sh build` or `./run_tasks.sh build_strict` 
 
 
 
@@ -26,18 +27,18 @@ Parameters:
 
 3. Debug compile options:
 
-3. 1. `cmake -B build -S . ` compiles with `g++ --std=c++23 -Wall -Wextra -Wpedantic`.
+	1. `cmake -B build -S . ` compiles with `g++ --std=c++23 -Wall -Wextra -Wpedantic`.
 
-3. 2. `cmake -B build_strict -S . -DCMAKE_BUILD_TYPE=StrictDebug` compiles with
-	`g++ --std=c++23 -O1 -g
-        -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
-        -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion
-        -Wfloat-equal -Wformat=2 -Wold-style-cast -Wuseless-cast
-        -Wzero-as-null-pointer-constant -Wsuggest-override -Wnon-virtual-dtor
-        -Wduplicated-branches -Wduplicated-cond -Wlogical-op -Wnull-dereference
-        -Wextra-semi -Wcast-align=strict -Wmissing-declarations -Wctor-dtor-privacy
-        -fanalyzer -fstack-protector-strong
-        -fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow,bounds-strict` .
+	2. `cmake -B build_strict -S . -DCMAKE_BUILD_TYPE=StrictDebug` compiles with
+		`g++ --std=c++23 -O1 -g
+	        -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
+	        -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion
+	        -Wfloat-equal -Wformat=2 -Wold-style-cast -Wuseless-cast
+	        -Wzero-as-null-pointer-constant -Wsuggest-override -Wnon-virtual-dtor
+	        -Wduplicated-branches -Wduplicated-cond -Wlogical-op -Wnull-dereference
+	        -Wextra-semi -Wcast-align=strict -Wmissing-declarations -Wctor-dtor-privacy
+	        -fanalyzer -fstack-protector-strong
+	        -fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow,bounds-strict` .
 
 
 
