@@ -1,5 +1,4 @@
-В этой папке лежат решения домашних заданий по курсу C++.
-
+Homework tasks for C++ course are stored in this folder.
 
 
 Launch:
