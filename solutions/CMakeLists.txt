@@ -9,10 +9,9 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build." FORCE)
 endif()
 
-# Генерируем базу данных компиляции (нужно для работы внешних утилит и IDE)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Настройка флагов для компилятора GCC
+# Compile options:
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_compile_options(-g -Wall -Wextra -Wpedantic)
 endif()
@@ -32,7 +31,8 @@ if(CMAKE_BUILD_TYPE STREQUAL "StrictDebug")
     add_link_options(-fsanitize=address,undefined,float-divide-by-zero,float-cast-overflow,bounds-strict)
 endif()
 
-# Автоматический поиск и создание целей
+
+# Automatically build targets:
 file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/main.cpp")
 
 foreach(source_file ${SOURCES})
