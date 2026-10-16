@@ -14,7 +14,7 @@ accompany your solution to this problem with tests.
 #include <iostream>
 #include <print>
 
-int main() {
+auto main() -> int {
 
   const double epsilon = 1e-9; // Comparison precision
   double a;

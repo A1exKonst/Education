@@ -25,13 +25,13 @@ It was only created to better isolate code in a given task 02.07.
 */
 class DynamicArray {
 private:
-  double *data_;
-  size_t cap;
-  size_t sz;
+  double *data_{nullptr};
+  size_t cap{0};
+  size_t sz{0};
 
   void resize() {
     cap = (cap == 0) ? 4 : cap * 2;
-    double *new_data = new double[cap];
+    auto *new_data = new double[cap];
 
     for (size_t i = 0; i < sz; ++i) {
       new_data[i] = data_[i];
@@ -42,7 +42,7 @@ private:
   }
 
 public:
-  DynamicArray() : data_(nullptr), cap(0), sz(0) {}
+  DynamicArray() = default;
 
   ~DynamicArray() {
     if (data_) {
@@ -58,17 +58,17 @@ public:
     sz++;
   }
 
-  size_t size() const { return sz; }
+  [[nodiscard]] auto size() const -> size_t { return sz; }
 
-  double &operator[](size_t index) { return data_[index]; }
+  auto operator[](size_t index) -> double & { return data_[index]; }
 
-  const double &operator[](size_t index) const { return data_[index]; }
+  auto operator[](size_t index) const -> const double & { return data_[index]; }
 
-  double *data() noexcept { // c-style
+  auto data() noexcept -> double * { // c-style
     return data_;
   }
 
-  const double *data() const noexcept { // c-style
+  [[nodiscard]] auto data() const noexcept -> const double * { // c-style
     return data_;
   }
 };
@@ -98,7 +98,7 @@ void bubble_sort(double *numbers, size_t size) {
   }
 }
 
-int main() {
+auto main() -> int {
   DynamicArray array;
   double value;
 

@@ -1,4 +1,4 @@
-// Probkem 02.06
+// Problem 02.06
 /*
 Calculate statistics of statically defined array
 */
@@ -8,13 +8,13 @@ Calculate statistics of statically defined array
 #include <iostream>
 #include <print>
 
-void bubble_sort(double *numbers, int size);
+void bubble_sort(double *numbers, unsigned int size);
 
-void bubble_sort(double *numbers, int size) {
-  for (int i = 0; i < size - 1; ++i) {
+void bubble_sort(double *numbers, unsigned int size) {
+  for (unsigned int i = 0; i < size - 1; ++i) {
     bool swapped = false;
 
-    for (int j = 0; j < size - i - 1; ++j) {
+    for (unsigned int j = 0; j < size - i - 1; ++j) {
       if (numbers[j] > numbers[j + 1]) {
         double temp = numbers[j];
         numbers[j] = numbers[j + 1];
@@ -28,25 +28,28 @@ void bubble_sort(double *numbers, int size) {
   }
 }
 
-int main() {
+auto main() -> int {
 
   // statically defined array
   const int MAX_SIZE = 1000;
-  double numbers[MAX_SIZE];
-  int size = 0; // could be unsigned int.
+  double numbers[MAX_SIZE]; // could be std::array, but task requires built-in
+                            // c-arrays
+  unsigned int size = 0;
 
-  if (!(std::cin >> size) || size <= 0 || size > MAX_SIZE) {
+  if (!(std::cin >> size) || size > MAX_SIZE) {
     return 1;
   }
 
   // Calculation of min, max, average
-  std::cin >> numbers[0];
+  if (!(std::cin >> numbers[0])) {
+    return 1;
+  }
   double min_val = numbers[0];
   double max_val = numbers[0];
   double sum = numbers[0];
 
   // min, max, average combined with input:
-  for (int i = 1; i < size; ++i) {
+  for (unsigned int i = 1; i < size; ++i) {
     if (!(std::cin >> numbers[i]))
       return 1;
     if (numbers[i] < min_val)
@@ -58,14 +61,14 @@ int main() {
   double mean = sum / size;
 
   double variance_sum = 0.0;
-  for (int i = 0; i < size; ++i) {
+  for (unsigned int i = 0; i < size; ++i) {
     variance_sum += (numbers[i] - mean) * (numbers[i] - mean);
   }
   double std_dev = std::sqrt(variance_sum / size);
 
   // optional, but before sort array is copied:
   double sorted_numbers[MAX_SIZE];
-  for (int i = 0; i < size; ++i) {
+  for (unsigned int i = 0; i < size; ++i) {
     sorted_numbers[i] = numbers[i];
   }
 

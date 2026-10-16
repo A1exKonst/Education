@@ -6,7 +6,7 @@ digits.
 
 #include <print>
 
-int main() {
+auto main() -> int {
 
   // Variables are used so that:
   // number = 100*i + 10*j + k

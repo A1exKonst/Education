@@ -36,7 +36,7 @@ more time, than simply computing and discarding high values (value > 100).
 
 using ull_t = unsigned long long;
 
-int main() {
+auto main() -> int {
   const ull_t upper_bound =
       100; // calculate all Collatz sequences for n in [1;100]
 
