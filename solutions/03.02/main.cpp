@@ -33,9 +33,13 @@ public:
   Circle(Circle &&) = default;
   ~Circle() = default;
 
-  double perimeter() const { return 2 * std::numbers::pi * radius; }
+  [[nodiscard]] auto perimeter() const -> double {
+    return 2 * std::numbers::pi * radius;
+  }
 
-  double area() const { return std::numbers::pi * radius * radius; }
+  [[nodiscard]] auto area() const -> double {
+    return std::numbers::pi * radius * radius;
+  }
 };
 
 class Triangle {
@@ -51,9 +55,9 @@ public:
   Triangle(Triangle &&) = default;
   ~Triangle() = default;
 
-  double perimeter() const { return a + b + c; }
+  [[nodiscard]] auto perimeter() const -> double { return a + b + c; }
 
-  double area() const { // Heron's formula is used
+  [[nodiscard]] auto area() const -> double { // Heron's formula is used
     double p = perimeter() / 2.0;
     return std::sqrt(p * (p - a) * (p - b) * (p - c));
   }
@@ -69,12 +73,12 @@ public:
   Square(Square &&) = default;
   ~Square() = default;
 
-  double perimeter() const { return 4 * side; }
+  [[nodiscard]] auto perimeter() const -> double { return 4 * side; }
 
-  double area() const { return side * side; }
+  [[nodiscard]] auto area() const -> double { return side * side; }
 };
 
-int main() {
+auto main() -> int {
 
   // test Circle:
   Circle circle(5.0);

@@ -37,11 +37,11 @@ public:
   int x2; // down right X
   int y2; // down right Y
 
-  bool isValid() const { // not inverted coordinates
+  [[nodiscard]] auto isValid() const -> bool { // not inverted coordinates
     return x1 <= x2 && y1 <= y2;
   }
 
-  long long area() const {
+  [[nodiscard]] auto area() const -> long long {
     if (x1 >= x2 || y1 >= y2) {
       return 0;
     }
@@ -110,7 +110,7 @@ auto getMinimumBoundingRectangle(const std::vector<Rectangle> &rectangles)
   return Rectangle{min_x, min_y, max_x, max_y};
 }
 
-int main() {
+auto main() -> int {
 
   // test data:
   std::vector<Rectangle> rects = {{0, 0, 3, 4}, {2, 2, 6, 6}, {1, 1, 3, 5}};

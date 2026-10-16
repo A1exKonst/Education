@@ -35,7 +35,7 @@ void run_unit_tests();
 
 void run_integration_tests();
 
-int main() {
+auto main() -> int {
   run_unit_tests();
   run_integration_tests();
   return 0;
@@ -60,7 +60,7 @@ public:
     }
   }
 
-  bool empty() const { return head == nullptr; }
+  [[nodiscard]] auto empty() const -> bool { return head == nullptr; }
 
   void push_front(int val) {
     Node *newNode = new Node{val, head};
@@ -116,7 +116,7 @@ public:
   }
 
   // Tortoise and Hare algorithm
-  int get() const {
+  [[nodiscard]] auto get() const -> int {
     if (empty()) {
       throw std::runtime_error("List is empty");
     }

@@ -37,14 +37,13 @@ void split(std::vector<int> &vector, std::size_t left,
            std::size_t right); // Recursive split for Quick Sort
 void order(std::vector<int> &vector, std::size_t left,
            std::size_t right); // Insertion sort for small arrays
-std::size_t
-partition(std::vector<int> &vector, std::size_t left,
-          std::size_t right); // Hoare partition for interval [left, right)
-int median_of_three(std::vector<int> &vector, std::size_t left,
-                    std::size_t right); // Choose median of three and put it at
-                                        // the start of the range
+auto partition(std::vector<int> &vector, std::size_t left, std::size_t right)
+    -> std::size_t; // Hoare partition for interval [left, right)
+auto median_of_three(std::vector<int> &vector, std::size_t left,
+                     std::size_t right)
+    -> int; // Choose median of three and put it at the start of the range
 
-int main() {
+auto main() -> int {
   auto size = 1uz << 10; // 1024
   std::vector<int> vector(size, 0);
   for (auto i = 0uz; i < size; ++i)
@@ -81,14 +80,14 @@ void sort(std::vector<int> &vector) {
 // Recursive split for quicksort via Hoare's algorithm.
 void split(std::vector<int> &vector, std::size_t left, std::size_t right) {
   if (right - left > 16) {
-    // in Hoare's algorithm it is guaranteed, that all of [left, p] <= all of [p
-    // + 1, right)
+    // in Hoare's algorithm it is guaranteed,
+    // that all of [left, p] <= all of [p + 1, right)
     std::size_t p = partition(vector, left, right);
     split(vector, left, p + 1);
     split(vector, p + 1, right);
   } else {
-    order(vector, left,
-          right); // small arrays are faster to sort through insertion sort.
+    order(vector, left, right);
+    // small arrays are faster to sort through insertion sort.
   }
 }
 
@@ -108,12 +107,12 @@ void order(std::vector<int> &vector, std::size_t left, std::size_t right) {
 vector[left, j] <= pivot
 vector[j+1, right] >= pivot
 vector[j] == pivot */
-std::size_t partition(std::vector<int> &vector, std::size_t left,
-                      std::size_t right) {
+auto partition(std::vector<int> &vector, std::size_t left,
+               std::size_t right) -> std::size_t {
   int pivot = median_of_three(vector, left, right);
 
   std::ptrdiff_t i = static_cast<std::ptrdiff_t>(left) - 1;
-  std::ptrdiff_t j = static_cast<std::ptrdiff_t>(right);
+  auto j = static_cast<std::ptrdiff_t>(right);
 
   while (true) {
     /* these 3 cycles altogether have an O(N) complexity,
@@ -137,8 +136,8 @@ std::size_t partition(std::vector<int> &vector, std::size_t left,
 /* if by default pivot is chosen as vector[left], than it has O(N^2) complexity
 on already sorted arrays. it is more optimal in this case to use a median of
 three elements as a pivot */
-int median_of_three(std::vector<int> &vector, std::size_t left,
-                    std::size_t right) {
+auto median_of_three(std::vector<int> &vector, std::size_t left,
+                     std::size_t right) -> int {
   auto mid = left + (right - left) / 2;
   auto last = right - 1;
 

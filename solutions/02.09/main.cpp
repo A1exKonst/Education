@@ -13,25 +13,19 @@ and std::lcm to validate the results.
 #include <print>
 #include <stdexcept>
 
-int gcd_recursive(int a, int b);
+auto gcd_recursive(unsigned int a, unsigned int b) -> unsigned int;
 
-int gcd_iterative(int a, int b);
+auto gcd_iterative(unsigned int a, unsigned int b) -> unsigned int;
 
-int lcm_custom(int a, int b);
+auto lcm_custom(unsigned int a, unsigned int b) -> unsigned int;
 
-int gcd_recursive(int a, int b) {
-  if (a < 0 || b < 0) {
-    throw std::invalid_argument("gcd expects positive numbers.");
-  }
+auto gcd_recursive(unsigned int a, unsigned int b) -> unsigned int {
   return b == 0 ? a : gcd_recursive(b, a % b);
 }
 
-int gcd_iterative(int a, int b) {
-  if (a < 0 || b < 0) {
-    throw std::invalid_argument("gcd expects positive numbers.");
-  }
+auto gcd_iterative(unsigned int a, unsigned int b) -> unsigned int {
   while (b != 0) {
-    int temp = b;
+    unsigned int temp = b;
     b = a % b;
     a = temp;
   }
@@ -39,31 +33,27 @@ int gcd_iterative(int a, int b) {
 }
 
 // There exists mathematical equation: lcm(a, b) = (a * b) / gcd(a, b)
-int lcm_custom(int a, int b) {
-  if (a < 0 || b < 0) {
-    throw std::invalid_argument(
-        "Числа должны быть натуральными (положительными).");
-  }
+auto lcm_custom(unsigned int a, unsigned int b) -> unsigned int {
   if (a == 0 || b == 0)
     return 0;
-  return (a / gcd_iterative(a, b)) * b;
+  return (a / gcd_iterative(a, b)) * b; // divide first to avoid overflow
 }
 
-int main() {
+auto main() -> int {
 
   // init tests:
-  std::pair<int, int> test_cases[] = {{0, 3},    {12, 18}, {45, 10}, {7, 13},
-                                      {100, 25}, {1, 50},  {24, 60}};
+  std::array<std::pair<unsigned int, unsigned int>, 7> test_cases = {
+      {{0, 3}, {12, 18}, {45, 10}, {7, 13}, {100, 25}, {1, 50}, {24, 60}}};
 
   // validate tests through std::gcd, std::lcm:
   for (const auto &[a, b] : test_cases) {
 
-    int gcd_rec = gcd_recursive(a, b);
-    int gcd_iter = gcd_iterative(a, b);
-    int lcm = lcm_custom(a, b);
+    unsigned int gcd_rec = gcd_recursive(a, b);
+    unsigned int gcd_iter = gcd_iterative(a, b);
+    unsigned int lcm = lcm_custom(a, b);
 
-    int gcd_std = std::gcd(a, b);
-    int lcm_std = std::lcm(a, b);
+    unsigned int gcd_std = std::gcd(a, b);
+    unsigned int lcm_std = std::lcm(a, b);
 
     assert(gcd_rec == gcd_std);
     assert(gcd_iter == gcd_std);

@@ -76,7 +76,7 @@ public:
   }
 };
 
-int main() {
+auto main() -> int {
   Entity entity;
 
   Tester_v1 t1;

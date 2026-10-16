@@ -56,8 +56,8 @@ class Shape {
 public:
   virtual ~Shape() = default;
 
-  virtual double perimeter() const = 0;
-  virtual double area() const = 0;
+  [[nodiscard]] virtual auto perimeter() const -> double = 0;
+  [[nodiscard]] virtual auto area() const -> double = 0;
 };
 
 // Abstract base class for derived Triangle and Rectangle
@@ -74,9 +74,13 @@ public:
     }
   }
 
-  double perimeter() const override { return 2 * std::numbers::pi * radius; }
+  [[nodiscard]] auto perimeter() const -> double override {
+    return 2 * std::numbers::pi * radius;
+  }
 
-  double area() const override { return std::numbers::pi * radius * radius; }
+  [[nodiscard]] auto area() const -> double override {
+    return std::numbers::pi * radius * radius;
+  }
 };
 
 class Triangle : public Polygon {
@@ -87,9 +91,9 @@ public:
   Triangle(double side1, double side2, double side3)
       : a(side1), b(side2), c(side3) {}
 
-  double perimeter() const override { return a + b + c; }
+  [[nodiscard]] auto perimeter() const -> double override { return a + b + c; }
 
-  double area() const override {
+  [[nodiscard]] auto area() const -> double override {
     // Heron's formula
     double p = perimeter() / 2.0;
     return std::sqrt(p * (p - a) * (p - b) * (p - c));
@@ -104,9 +108,11 @@ private:
 public:
   Rectangle(double w, double h) : width(w), height(h) {}
 
-  double perimeter() const override final { return 2 * (width + height); }
+  [[nodiscard]] auto perimeter() const -> double final {
+    return 2 * (width + height);
+  }
 
-  double area() const override final { return width * height; }
+  [[nodiscard]] auto area() const -> double final { return width * height; }
 };
 
 class Square final : public Rectangle {
@@ -114,7 +120,7 @@ public:
   explicit Square(double side) : Rectangle(side, side) {}
 };
 
-int main() {
+auto main() -> int {
 
   // init tests
   std::vector<Shape *> shapes = {new Circle(5.0), new Triangle(3.0, 4.0, 5.0),

@@ -39,14 +39,14 @@ public:
 
 class Adapter_v1 : public Entity_v1 {
 public:
-  virtual void test() override { test_v1(); }
+  void test() override { test_v1(); }
 
   virtual void test_v1() = 0; // new member function to override in Client.
 };
 
 class Adapter_v2 : public Entity_v2 {
 public:
-  virtual void test() override { test_v2(); }
+  void test() override { test_v2(); }
 
   virtual void test_v2() = 0; // new member function to override in Client.
 };
@@ -63,7 +63,7 @@ public:
   }
 };
 
-int main() {
+auto main() -> int {
   Client client;
 
   Entity_v1 *entity1 = static_cast<Adapter_v1 *>(
