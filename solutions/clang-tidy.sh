@@ -13,11 +13,18 @@ if [ ! -f "$TARGET_FILE" ]; then
     exit 1
 fi
 
-echo "call $TARGET_FILE clang-tidy..."
+FIX_FLAG=""
+if [ "$2" == "--fix" ] || [ "$2" == "-f" ]; then
+    echo "Fix mode enabled."
+    FIX_FLAG="--fix"
+fi
+
+echo "call clang-tidy $TARGET_FILE..."
 
 clang-tidy "$TARGET_FILE" \
   -checks="-*,bugprone-*,modernize-*,performance-*" \
   --header-filter="^$(pwd)/" \
+  $FIX_FLAG \
   -- \
   -std=c++23 \
   -stdlib=libc++ \

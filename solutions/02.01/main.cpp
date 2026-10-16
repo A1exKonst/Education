@@ -27,16 +27,17 @@ From F_0 = 0, F_1 = 1 we get C_1 = 1 / \sqrt{5}; C_2 = -1 / \sqrt{5}
 
 #include <cmath>
 #include <iostream>
+#include <numbers>
 #include <print>
 
-int main() {
+auto main() -> int {
   int n = 0;
   if (!(std::cin >> n) || n < 0 || n > 46) {
     return 1;
   }
   // (n <= 46) restriction is due to int overflow.
 
-  const double q_1 = (1.0 + std::sqrt(5.0)) / 2.0;
+  const double q_1 = std::numbers::phi; // (1.0 + std::sqrt(5.0)) / 2.0;
   const double q_2 = (1.0 - std::sqrt(5.0)) / 2.0;
 
   double Fn_double = (std::pow(q_1, n) - std::pow(q_2, n)) / std::sqrt(5.0);
